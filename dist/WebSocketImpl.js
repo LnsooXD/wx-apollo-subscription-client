@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebSocketImpl = exports.CLOSED = exports.CLOSING = exports.OPEN = exports.CONNECTING = void 0;
 const eventemitter3_1 = __importDefault(require("eventemitter3"));
 const protocol_1 = __importDefault(require("./protocol"));
 exports.CONNECTING = 0;
@@ -10,6 +11,9 @@ exports.OPEN = 1;
 exports.CLOSING = 2;
 exports.CLOSED = 3;
 class WebSocketImpl extends eventemitter3_1.default {
+    get readyState() {
+        return this.socketTask.readyState;
+    }
     constructor(url, protocols) {
         super();
         this.url = url;
@@ -56,21 +60,6 @@ class WebSocketImpl extends eventemitter3_1.default {
                 listeners.forEach(listener => listener(ev));
             }
         });
-    }
-    get CLOSED() {
-        return 3;
-    }
-    get CLOSING() {
-        return 2;
-    }
-    get CONNECTING() {
-        return 0;
-    }
-    get OPEN() {
-        return 1;
-    }
-    get readyState() {
-        return this.socketTask.readyState;
     }
     terminate() {
         throw new Error('Method not implemented.');

@@ -8,21 +8,10 @@ export const CLOSED = 3;
 
 export class WebSocketImpl extends EventEmitter implements WebSocket {
 
-  public get CLOSED() {
-    return 3;
-  }
-
-  public get CLOSING() {
-    return 2;
-  }
-
-  public get CONNECTING() {
-    return 0;
-  }
-
-  public get OPEN() {
-    return 1;
-  }
+  readonly CONNECTING: 0;
+  readonly OPEN: 1;
+  readonly CLOSING: 2;
+  readonly CLOSED: 3;
 
   protocol: string;
 

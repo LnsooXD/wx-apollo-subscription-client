@@ -4,10 +4,10 @@ export declare const OPEN = 1;
 export declare const CLOSING = 2;
 export declare const CLOSED = 3;
 export declare class WebSocketImpl extends EventEmitter implements WebSocket {
-    get CLOSED(): number;
-    get CLOSING(): number;
-    get CONNECTING(): number;
-    get OPEN(): number;
+    readonly CONNECTING: 0;
+    readonly OPEN: 1;
+    readonly CLOSING: 2;
+    readonly CLOSED: 3;
     protocol: string;
     get readyState(): number;
     url: string;

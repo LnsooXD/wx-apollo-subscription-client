@@ -18,15 +18,21 @@
     "subscription",
     "websocket"
   ],
-  "license" : "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
   "homepage": "https://github.com/functorz-team/wx-apollo-subscription-client",
   "dependencies": {
     "@types/backo2": "^1.0.1",
-    "@types/ws": "^7.2.7",
+    "@types/ws": "^8.5.5",
     "apollo-link": "^1.2.14",
     "backo2": "^1.0.2",
-    "eventemitter3": "^4.0.7",
-    "graphql": "^15.3.0",
-    "symbol-observable": "^2.0.3"
+    "eventemitter3": "^5.0.1",
+    "graphql": "^15.8.0",
+    "symbol-observable": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.5"
   }
 }

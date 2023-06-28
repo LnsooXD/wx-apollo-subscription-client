@@ -2,8 +2,8 @@ import Backoff from 'backo2';
 import {
   default as EventEmitterType,
   EventEmitter,
-  ListenerFn,
 } from 'eventemitter3';
+
 import { ExecutionResult } from 'graphql/execution/execute';
 import { print } from 'graphql/language/printer';
 import { DocumentNode } from 'graphql/language/ast';
@@ -267,7 +267,7 @@ export class SubscriptionClient {
     };
   }
 
-  public on(eventName: string, callback: ListenerFn, context?: any): Function {
+  public on(eventName: string, callback: EventEmitter.ListenerFn, context?: any): Function {
     const handler = this.eventEmitter.on(eventName, callback, context);
 
     return () => {
@@ -275,27 +275,27 @@ export class SubscriptionClient {
     };
   }
 
-  public onConnected(callback: ListenerFn, context?: any): Function {
+  public onConnected(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('connected', callback, context);
   }
 
-  public onConnecting(callback: ListenerFn, context?: any): Function {
+  public onConnecting(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('connecting', callback, context);
   }
 
-  public onDisconnected(callback: ListenerFn, context?: any): Function {
+  public onDisconnected(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('disconnected', callback, context);
   }
 
-  public onReconnected(callback: ListenerFn, context?: any): Function {
+  public onReconnected(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('reconnected', callback, context);
   }
 
-  public onReconnecting(callback: ListenerFn, context?: any): Function {
+  public onReconnecting(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('reconnecting', callback, context);
   }
 
-  public onError(callback: ListenerFn, context?: any): Function {
+  public onError(callback: EventEmitter.ListenerFn, context?: any): Function {
     return this.on('error', callback, context);
   }
 

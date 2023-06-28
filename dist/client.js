@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SubscriptionClient = void 0;
 const backo2_1 = __importDefault(require("backo2"));
 const eventemitter3_1 = require("eventemitter3");
 const printer_1 = require("graphql/language/printer");
@@ -268,9 +269,9 @@ class SubscriptionClient {
         if (!handler) {
             throw new Error('Must provide an handler.');
         }
-        if ((!is_string_1.default(query) && !getOperationAST_1.getOperationAST(query, operationName)) ||
-            (operationName && !is_string_1.default(operationName)) ||
-            (variables && !is_object_1.default(variables))) {
+        if ((!(0, is_string_1.default)(query) && !(0, getOperationAST_1.getOperationAST)(query, operationName)) ||
+            (operationName && !(0, is_string_1.default)(operationName)) ||
+            (variables && !(0, is_object_1.default)(variables))) {
             throw new Error('Incorrect option types. query must be a string or a document,' +
                 '`operationName` must be a string, and `variables` must be an object.');
         }
@@ -279,7 +280,7 @@ class SubscriptionClient {
         const payloadToReturn = payload && payload.query
             ? Object.assign(Object.assign({}, payload), { query: typeof payload.query === 'string'
                     ? payload.query
-                    : printer_1.print(payload.query) }) : payload;
+                    : (0, printer_1.print)(payload.query) }) : payload;
         return {
             id,
             type,

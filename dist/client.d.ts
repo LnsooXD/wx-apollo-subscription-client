@@ -1,4 +1,4 @@
-import { ListenerFn } from 'eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 import { ExecutionResult } from 'graphql/execution/execute';
 import { DocumentNode } from 'graphql/language/ast';
 export interface Observer<T> {
@@ -17,7 +17,7 @@ export interface OperationOptions {
     operationName?: string;
     [key: string]: any;
 }
-export declare type FormatedError = Error & {
+export type FormatedError = Error & {
     originalError?: any;
 };
 export interface Operation {
@@ -30,10 +30,10 @@ export interface Operations {
 export interface Middleware {
     applyMiddleware(options: OperationOptions, next: Function): void;
 }
-export declare type ConnectionParams = {
+export type ConnectionParams = {
     [paramName: string]: any;
 };
-export declare type ConnectionParamsOptions = ConnectionParams | Function | Promise<ConnectionParams>;
+export type ConnectionParamsOptions = ConnectionParams | Function | Promise<ConnectionParams>;
 export interface ClientOptions {
     connectionParams?: ConnectionParamsOptions;
     minTimeout?: number;
@@ -77,13 +77,13 @@ export declare class SubscriptionClient {
     get status(): any;
     close(isForced?: boolean, closedByUser?: boolean): void;
     request(request: OperationOptions): Observable<ExecutionResult>;
-    on(eventName: string, callback: ListenerFn, context?: any): Function;
-    onConnected(callback: ListenerFn, context?: any): Function;
-    onConnecting(callback: ListenerFn, context?: any): Function;
-    onDisconnected(callback: ListenerFn, context?: any): Function;
-    onReconnected(callback: ListenerFn, context?: any): Function;
-    onReconnecting(callback: ListenerFn, context?: any): Function;
-    onError(callback: ListenerFn, context?: any): Function;
+    on(eventName: string, callback: EventEmitter.ListenerFn, context?: any): Function;
+    onConnected(callback: EventEmitter.ListenerFn, context?: any): Function;
+    onConnecting(callback: EventEmitter.ListenerFn, context?: any): Function;
+    onDisconnected(callback: EventEmitter.ListenerFn, context?: any): Function;
+    onReconnected(callback: EventEmitter.ListenerFn, context?: any): Function;
+    onReconnecting(callback: EventEmitter.ListenerFn, context?: any): Function;
+    onError(callback: EventEmitter.ListenerFn, context?: any): Function;
     unsubscribeAll(): void;
     applyMiddlewares(options: OperationOptions): Promise<OperationOptions>;
     use(middlewares: Middleware[]): SubscriptionClient;
